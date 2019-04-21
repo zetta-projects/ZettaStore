@@ -1,0 +1,15 @@
+{
+  "name": "@zetta-projects/zettastore",
+  "version": "1.0.0",
+  "main": "src/ZettaStore.js",
+  "typings": "typings/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zetta-projects/ZettaStore.git"
+  },
+  "dependencies": {
+    "orbit-db-eventstore": "1.5.0-rc.1"
+  },
+  "author": "zetta-projects",
+  "license": "MIT"
+}
