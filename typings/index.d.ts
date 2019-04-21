@@ -29,8 +29,8 @@ export declare class ZettaStore<T extends Entry> extends Store {
 
     setAdmins(admins: string[]): void;
 
-    isSynced(): boolean;
-    loadAndSync(): Promise<void>;
+    isSynced(creator: string): boolean;
+    loadAndSync(creator: string): Promise<void>;
 
     iterator(options?: {
         gt?: string,
