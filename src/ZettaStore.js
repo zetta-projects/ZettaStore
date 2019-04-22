@@ -12,6 +12,11 @@ class ZettaStore extends EventStore {
 
         // @ts-ignore
         this._raw_query = super._query
+        this._raw_add = super.add
+    }
+
+    add(data) {
+        return this._raw_add(JSON.stringify(data))
     }
 
     /**
@@ -112,6 +117,9 @@ class ZettaStore extends EventStore {
         if (opts.reverse) {
             result.reverse()
         }
+        result.forEach(entry => {
+            entry.payload.value = JSON.parse(entry.payload.value)
+        })
         return result
     }
 
