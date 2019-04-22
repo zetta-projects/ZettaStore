@@ -117,10 +117,12 @@ class ZettaStore extends EventStore {
         if (opts.reverse) {
             result.reverse()
         }
-        result.forEach(entry => {
+        return result.map(entry => {
+            // deep copy
+            entry = JSON.parse(JSON.stringify(entry))
             entry.payload.value = JSON.parse(entry.payload.value)
+            return entry
         })
-        return result
     }
 
     static get type() {
