@@ -34,7 +34,7 @@ class ZettaIndex {
         oplog.values.reduce((handled, item) => {
             if (!handled.includes(item.hash)) {
                 handled.push(item.hash)
-                if (item.payload.op === 'ADD') {
+                if (item.payload.op === 'ADD' || item.payload.op === 'INIT') {
                     this._index[item.hash] = item
                 } else if (item.payload.op === 'DEL' && this.canDelete(item.payload.value)) {
                     delete this._index[item.payload.value]

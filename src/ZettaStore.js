@@ -67,7 +67,7 @@ class ZettaStore extends EventStore {
      */
     isSynced(creator) {
         try {
-            const entries = this.iterator({ limit: -1 }).collect()
+            const entries = this.all.concat()
             const isInitedByCreator = entries.some((entry) => {
                 return entry.payload.op == "INIT" && entry.key == creator
             })
@@ -117,7 +117,9 @@ class ZettaStore extends EventStore {
         if (opts.reverse) {
             result.reverse()
         }
-        return result.map(entry => {
+        return result.filter(entry => {
+            return entry.payload.op !== "INIT"
+        }).map(entry => {
             // deep copy
             entry = JSON.parse(JSON.stringify(entry))
             entry.payload.value = JSON.parse(entry.payload.value)
