@@ -8,7 +8,7 @@
     "url": "git+https://github.com/zetta-projects/ZettaStore.git"
   },
   "dependencies": {
-    "orbit-db-eventstore": "1.5.0-rc.1"
+    "orbit-db-eventstore": "~1.5.0"
   },
   "author": "zetta-projects",
   "license": "MIT"
